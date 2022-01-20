@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "deepmerge": "^4.2.2",
+    "extend": "^3.0.2"
+  }
+}
