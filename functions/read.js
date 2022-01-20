@@ -6,10 +6,23 @@ const splits = {
     'SafeSemiColon': '[]:&#?.??.><![][]!!!!Section-Safe_SemiColon',
 }
 
+function codeSanitizer(str) {
+    return str
+    .split('{').join('')
+    .split('}').join('')
+    .split('[').join('')
+    .split(']').join('')
+    .split('(').join('')
+    .split(')').join('')
+    .split('=>').join('')
+    .split('function').join('')
+    .split('eval').join('')
+}
+
 module.exports = (fn) => {
     if (fs.existsSync(fn)) {
         try {
-            rawData = fs.readFileSync(fn, 'utf8').split('\r').join('').split('\t').join('').split('\n').join('');
+            rawData = codeSanitizer(fs.readFileSync(fn, 'utf8').split('\r').join('').split('\t').join('').split('\n').join(''));
             sections = rawData.split(`\\;`).join(splits.SafeSemiColon).split(';');
             var validSections = [];
             var jsonBuilder = {};
