@@ -68,8 +68,7 @@ module.exports = (fn) => {
                     }
                 }
             }
-            console.log(jsonBuilder)
-            return dataFromFile;
+            return jsonBuilder;
         } catch (err) {
             //console.log(err)
             return undefined;
